@@ -1,6 +1,5 @@
 package com.example.travelmantics;
 
-import android.app.ListActivity;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,7 +31,7 @@ public class FirebaseUtil {
     public static ArrayList<TravelDeal> mdeals;
     private static final int RC_SIGN_IN =123;
     private  static ListActivity caller;
-    private FirebaseUtil() {};
+    private FirebaseUtil() {}
     public  static boolean isAdmin;
 
     public static void openFbReference(String ref, final ListActivity callerActivity) {
@@ -118,7 +117,5 @@ public class FirebaseUtil {
     public  static void connectStorage(){
         mStorage = FirebaseStorage.getInstance();
         mStorageRef = mStorage.getReference().child("deals_pictures");
-    }
-    public static void openFbReference(String traveldeals, com.example.travelmantics.ListActivity listActivity) {
     }
 }
