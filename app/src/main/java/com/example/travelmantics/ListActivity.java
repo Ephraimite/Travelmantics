@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +18,8 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +36,11 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+
+
+
+
     }
 
     @Override
@@ -78,16 +87,15 @@ public class ListActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        FirebaseUtil.attachListener();
         super.onResume();
-
-        FirebaseUtil.openFbReference("traveldeals", this);
-        RecyclerView rvdeals = (RecyclerView) findViewById(R.id.rvDeals);
-        final DealAdapter adapter = new DealAdapter();
-        rvdeals.setAdapter(adapter);
+        FirebaseUtil.openFbReference("traveldeals",this);
+        RecyclerView rvDeals = (RecyclerView) findViewById(R.id.rvDeals);
+        final  DealAdapter adapter = new DealAdapter();
+        rvDeals.setAdapter(adapter);
         LinearLayoutManager dealsLayoutManager =
-                new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-        rvdeals.setLayoutManager(dealsLayoutManager);
+                new LinearLayoutManager(this);
+        rvDeals.setLayoutManager(dealsLayoutManager);
+        FirebaseUtil.attachListener();
     }
     public void showMenu(){
         invalidateOptionsMenu();

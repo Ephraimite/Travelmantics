@@ -1,5 +1,6 @@
 package com.example.travelmantics;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class FirebaseUtil {
             mAuthListener = new FirebaseAuth.AuthStateListener() {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
                     if (firebaseAuth.getCurrentUser()==null) {
                         FirebaseUtil.signIn();
                     }
